@@ -6,7 +6,7 @@ import {
 import baseDeDatos from './basededatos';
 
 // materiasAprobadasByNombreAlumno
-console.log('------------------------------------------------------');
+console.log('---------------------------------r---------------------');
 console.log('Ejecutando ejercicios materiasAprobadasByNombreAlumno.');
 
 const materiasAprobadasPorSuzana = materiasAprobadasByNombreAlumno(

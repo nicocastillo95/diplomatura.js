@@ -1,7 +1,7 @@
 import basededatos from './basededatos';
 
 /**
- * Obtiene la lista de materias aprobadas (nota >= 4) para el nombre de alumno dado.
+ * Obtiene lla lista de materias aprobadas (nota >= 4) para el nombre de alumno dado.
  * En caso de no existir el alumno, devolver undefined.
  * En caso de que no encuentre ninguna materia para el alumno, devuelve un array vacio []
  * Ejemplo del formato del resultado suponiendo que el alumno cursa dos materias y tiene mas de 4.
@@ -24,6 +24,8 @@ import basededatos from './basededatos';
 export const materiasAprobadasByNombreAlumno = (nombreAlumno) => {
   // Ejemplo de como accedo a datos dentro de la base de datos
   // console.log(basededatos.alumnos);
+  //console.log(basededatos.alumnos.nombre);
+  if (basededatos.alumnos.nombre === nombreAlumno) {console.log (basededatos.alumnos)};
   return [];
 };
 
