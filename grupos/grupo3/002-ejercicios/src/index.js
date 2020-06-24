@@ -87,41 +87,45 @@ const infoAlumnos=()=>{
     })
     
 }
-infoAlumnos();
+//infoAlumnos();
 
 
 // 12) Implementar una función que guarde la calificación de un alumno y una materia
 //     La función recibirá: 'nombre del alumno', 'nombre de la materia', 'nota'
 //     Si el alumno y/o la materia no existen deberán crearlos en sus respectivas tablas
 
-const insertCalificacion=(nombreAlumno,nombreMateria,nota)=>{}
-
-const insertAlumno = (nombreAlumno,edad,nombreProvincia) => {
-    helpers.existeByNombre(nombreProvincia,'provincias')===false ? insertProvincia(nombreProvincia):'';
-    database.alumnos.push({ 
-        id : 1+(helpers.obtenerUltimoId('alumnos')),
-        nombre : nombreAlumno,
-        edad : edad,
-        provincia : nombreProvincia
-    })
-}
-
-const insertMateria = (nombreMateria,profesores,universidad) => {
-    helpers.existeByNombre(nombreMateria,'materias')? false;
-    helpers.existeByNombre(nombreProfesor,'profesores')===false ? insertProfesor(nombreProfesor):'';
-
-    helpers.existeByNombre(nombreProvincia,'provincias')===false ? insertProvincia(nombreProvincia):'';
-    helpers.existeByNombre(nombreProvincia,'provincias')===false ? insertProvincia(nombreProvincia):'';
-    helpers.existeByNombre(nombreProvincia,'provincias')===false ? insertProvincia(nombreProvincia):'';
-    database.alumnos.push({ 
-        id : 1+(helpers.obtenerUltimoId('alumnos')),
-        nombre : nombreAlumno,
-        edad : edad,
-        provincia : nombreProvincia
-    })
+const insertCalificacion=(nombreAlumno,nombreMateria,nota)=>{
+    let idAlumno;
+    let idMateria;
+    if(!helpers.existeByNombre(nombreAlumno,'alumnos')){
+        idAlumno = insertAlumno(nombreAlumno,24,'Neuquen').id} else {
+            idAlumno=helpers.obtenerByNombre(nombreAlumno,'alumnos').id;
+        }
+    if(!helpers.existeByNombre(nombreMateria,'materias')){
+        idMateria = insertMateria(nombreMateria,[2,4],'Universidad del Comahue').id} else {
+            idMateria=helpers.obtenerByNombre(nombreMateria,'materias').id;
+        }
+    database.calificaciones.push({alumno:idAlumno, materia:idMateria, nota:nota})
     
 }
 
-const insertProfesor = (nombreProfesor) => {
-    database.provincias.push({ id : 1+(helpers.obtenerUltimoId('provincias')), nombre : nombreProvincia });
+const insertAlumno = (nombreAlumno,edad,nombreProvincia) => {
+    return database.alumnos[database.alumnos.push({ 
+        id : 1+(helpers.obtenerUltimoId('alumnos')),
+        nombre : nombreAlumno,
+        edad : edad,
+        provincia : nombreProvincia
+    })-1]
 }
+
+const insertMateria = (nombreMateria,profesores,idUniversidad) => {
+    return database.materias[database.materias.push({ 
+        id : 1+(helpers.obtenerUltimoId('materias')),
+        nombre : nombreMateria,
+        profesores : profesores,
+        universidad : idUniversidad
+    })-1]
+}
+
+insertCalificacion('Rigoberto Manchu','Análisis matemático',2);
+console.log(database.calificaciones)
