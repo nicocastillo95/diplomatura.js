@@ -146,7 +146,7 @@ export const expandirInfoUniversidadByNombre = (nombreUniversidad) => {
 
   return infoUniversidad ;
 }
-};
+
 
 // /**
 //  * Devuelve el promedio de edad de los alumnos.
