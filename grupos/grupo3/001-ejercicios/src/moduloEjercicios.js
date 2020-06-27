@@ -82,7 +82,70 @@ return arr;
  * @param {string} nombreUniversidad
  */
 export const expandirInfoUniversidadByNombre = (nombreUniversidad) => {
-  return {};
+  let infoUniversidad;
+  let universidad;
+  let arrProMateria;
+  let materias = ["Materias: "];
+  let profesores = ["Profesores: "]
+  let arrProfesores;
+  let arrCalificaciones = [];
+  let alumnos = ["Alumnos: "];
+  let arrAlumnos;
+  let exito = false;
+
+
+  for(let i = 0; i<basededatos.universidades.length;i++){
+    universidad = basededatos.universidades[i];
+    if(universidad.nombre===nombreUniversidad){
+      infoUniversidad = ["Universidad: "];
+      infoUniversidad.push(universidad);
+      materias = basededatos.materias.filter(materia => materia.universidad === universidad.id);
+      infoUniversidad.push(materias);
+      arrProfesores= basededatos.profesores;
+      for(let o = 0; o < arrProfesores.length; o++){
+        let p = 0;
+        while(!exito && p < materias.length){
+          arrProMateria = materias[p].profesores;
+          for(let q = 0; q < arrProMateria.length; q++){
+            if(arrProfesores[o].id === arrProMateria[q]){
+              exito = true;
+              profesores.push(arrProfesores[o]);
+              break;
+            }
+          }
+          p++;
+        }
+        exito=false;
+      }
+
+      for(let j = 0; j< materias.length; j++){
+        for(let m= 0; m < basededatos.calificaciones.length; m++){
+          if(materias[j].id === basededatos.calificaciones[m].materia){
+            arrCalificaciones.push(basededatos.calificaciones[m]);
+          }
+        }
+      }
+      
+      arrAlumnos = basededatos.alumnos;
+
+      for(let n = 0; n < arrAlumnos.length; n++){
+        for(let m = 0; m < arrCalificaciones.length; m++){
+          if(arrAlumnos[n].id === arrCalificaciones[m].alumno){
+            alumnos.push(arrAlumnos[n]);
+            break;
+          }
+        }
+      }
+
+
+      infoUniversidad.push(profesores);
+      infoUniversidad.push(alumnos);
+      break;
+    }
+  }
+
+  return infoUniversidad ;
+}
 };
 
 // /**
