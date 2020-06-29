@@ -1,17 +1,7 @@
 //console.clear();
 import { Collection } from './1.collection';
+import { Vector } from './2.Vector';
 
-const col = new Collection([2, 3, 4]);
-// console.log('ANTES ===> ', col);
-// console.log('');
-// console.log('HAS 3 ? ===> ', col.has(3));
-// console.log('');
-// console.log('HAS 5 ? ===> ', col.has(5));
-// console.log('');
-// col.add(5);
-// console.log('DESPUES DE ADD ===> ', col);
-// console.log('');
-// console.log('HAS 5 ? ===> ', col.has(5));
-// console.log('');
-// col.delete(5);
-// console.log('DESPUES DE DELETE ===> ', col);
+//const col = new Collection([2, 3, 4]);
+
+console.log(new Vector(1, 2).sumar(new Vector(2, 3)));
