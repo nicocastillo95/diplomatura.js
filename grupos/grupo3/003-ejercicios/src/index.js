@@ -4,6 +4,7 @@ import { Vector } from './2.Vector';
 import { delay, run } from './3.DelayConCallbacks';
 import { chaining } from './4.api';
 import { asyncAwait } from './5.apiAsync';
+import { runDelay } from './6.DelayPromise';
 // Punto 1 Collection
 //const col = new Collection([2, 3, 4]);
 
@@ -18,3 +19,7 @@ import { asyncAwait } from './5.apiAsync';
 
 // Punto 5 API Async/Await
 //asyncAwait();
+
+// Punto 6 DelayPromise
+console.clear();
+runDelay();
