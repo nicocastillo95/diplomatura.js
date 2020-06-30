@@ -3,6 +3,7 @@ import { Collection } from './1.collection';
 import { Vector } from './2.Vector';
 import { delay, run } from './3.DelayConCallbacks';
 import { chaining } from './4.api';
+import { asyncAwait } from './5.apiAsync';
 // Punto 1 Collection
 //const col = new Collection([2, 3, 4]);
 
@@ -14,3 +15,6 @@ import { chaining } from './4.api';
 
 // Punto 4 API Promise Chaining
 //chaining();
+
+// Punto 5 API Async/Await
+//asyncAwait();
